@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Margin Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        background-image: url()
+
+ }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #equity-result {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Equity Margin Calculator</h1>
+        <div class="input-container">
+            <label for="stock-price">Stock Price (per share):</label>
+            <input type="number" id="stock-price" placeholder="Enter stock price">
+        </div>
+        <div class="input-container">
+            <label for="number-of-shares">Number of Shares:</label>
+            <input type="number" id="number-of-shares" placeholder="Enter number of shares">
+        </div>
+        <div class="input-container">
+            <label for="margin-percentage">Margin Percentage (%):</label>
+            <input type="number" id="margin-percentage" placeholder="Enter margin percentage">
+        </div>
+        <button onclick="calculateMargin()">Calculate Margin</button>
+        <div id="equity-result"></div>
+    </div>
+
+    <script>
+        function calculateMargin() {
+            const stockPrice = parseFloat(document.getElementById('stock-price').value);
+            const numberOfShares = parseFloat(document.getElementById('number-of-shares').value);
+            const marginPercentage = parseFloat(document.getElementById('margin-percentage').value);
+            
+            if (!isNaN(stockPrice) && !isNaN(numberOfShares) && !isNaN(marginPercentage)) {
+                const equity = stockPrice * numberOfShares;
+                const marginAmount = (equity * marginPercentage) / 100;
+                document.getElementById('equity-result').textContent = `Equity: $${equity.toFixed(2)} | Margin Amount: $${marginAmount.toFixed(2)}`;
+            } else {
+                document.getElementById('equity-result').textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+</body>
+</html>
